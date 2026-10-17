@@ -1,0 +1,16 @@
+{
+  "validLogin": {
+    "email": "fulano@qa.com",
+    "password": "teste"
+  },
+  "invalidLogin": {
+    "email": "invalido@qa.com",
+    "password": "senhaerrada"
+  },
+  "registerUser": {
+    "nome": "Usuário E2E",
+    "email": "qa.{timestamp}@mail.com",
+    "password": "teste",
+    "isAdmin": true
+  }
+}
