@@ -6,6 +6,8 @@ import requestBodies from '../../fixtures/payload/send/user-api-bodies.json';
 import loginResponse from '../../fixtures/payload/return/login-response.json';
 import usersResponse from '../../fixtures/payload/return/users-response.json';
 import createUserResponse from '../../fixtures/payload/return/create-user-response.json';
+import invalidLoginResponse from '../../fixtures/payload/return/invalid-login-response.json';
+import invalidUserResponse from '../../fixtures/payload/return/invalid-user-response.json';
 
 describe('API - ServeRest', () => {
   it('[POST] Should login with valid credentials', () => {
@@ -50,6 +52,31 @@ describe('API - ServeRest', () => {
       expect(response.status).to.eq(201);
       expect(response.body.message).to.eq(createUserResponse.message);
       expect(response.body._id).to.be.a(typeof createUserResponse._id).and.not.be.empty;
+    });
+  });
+
+  it('[POST] Should reject login with invalid credentials', () => {
+    cy.apiRequest({
+      method: POST,
+      endpoint: LOGIN,
+      body: requestBodies.invalidLogin,
+      headers: JSON_HEADERS
+    }).then((response) => {
+      expect(response.status).to.eq(invalidLoginResponse.status);
+      expect(response.body.message).to.eq(invalidLoginResponse.message);
+    });
+  });
+
+  it('[POST] Should reject user creation when required fields are empty', () => {
+    cy.apiRequest({
+      method: POST,
+      endpoint: USERS,
+      body: requestBodies.invalidUser,
+      headers: JSON_HEADERS
+    }).then((response) => {
+      expect(response.status).to.eq(invalidUserResponse.status);
+      expect(response.body).to.be.an(invalidUserResponse.bodyType);
+      expect(Object.keys(response.body)).to.have.length.greaterThan(0);
     });
   });
 });

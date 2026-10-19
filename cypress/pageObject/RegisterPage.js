@@ -27,6 +27,10 @@ class RegisterPage {
     return RegisterElements.successMessage();
   }
 
+  getDuplicateEmailMessage() {
+    return RegisterElements.duplicateEmailMessage();
+  }
+
   goToLogin() {
     RegisterElements.loginLink().click();
     return this;

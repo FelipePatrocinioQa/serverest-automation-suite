@@ -5,6 +5,7 @@ const RegisterElements = {
   adminCheckbox: () => cy.contains('label', 'Cadastrar como administrador?'),
   submitButton: () => cy.contains('button', 'Cadastrar'),
   successMessage: () => cy.contains('Cadastro realizado com sucesso'),
+  duplicateEmailMessage: () => cy.contains('Este email já está sendo usado'),
   loginLink: () => cy.contains('Entrar')
 };
 
