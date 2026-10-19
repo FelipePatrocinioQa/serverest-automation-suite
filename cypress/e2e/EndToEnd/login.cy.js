@@ -14,7 +14,12 @@ describe('Frontend - ServeRest', () => {
 
   it('[Login] Should show an error message for invalid credentials', () => {
     LoginPage.login(testData.invalidLogin.email, testData.invalidLogin.password);
-    LoginPage.getErrorMessage().should('be.visible').and('contain.text', 'Email e/ou senha inválidos');
+    LoginPage.getErrorMessage().should('be.visible').and('contain.text', testData.messages.invalidCredentials);
+  });
+
+  it('[Login] Should reject a valid account with an incorrect password', () => {
+    LoginPage.login(testData.wrongPasswordLogin.email, testData.wrongPasswordLogin.password);
+    LoginPage.getErrorMessage().should('be.visible').and('contain.text', testData.messages.invalidCredentials);
   });
 
   it('[Register] Should register a new user through the UI', () => {
@@ -28,5 +33,14 @@ describe('Frontend - ServeRest', () => {
     RegisterPage.fillForm(newUser);
     RegisterPage.submit();
     RegisterPage.getSuccessMessage().should('be.visible').and('contain.text', 'Cadastro realizado com sucesso');
+  });
+
+  it('[Register] Should reject an email that is already registered', () => {
+    LoginPage.goToRegister();
+    RegisterPage.fillForm(testData.duplicateRegisterUser);
+    RegisterPage.submit();
+    RegisterPage.getDuplicateEmailMessage()
+      .should('be.visible')
+      .and('contain.text', testData.messages.duplicateEmail);
   });
 });

@@ -7,10 +7,24 @@
     "email": "invalido@qa.com",
     "password": "senhaerrada"
   },
+  "wrongPasswordLogin": {
+    "email": "fulano@qa.com",
+    "password": "senha-invalida"
+  },
   "registerUser": {
     "nome": "Usuário E2E",
     "email": "qa.{timestamp}@mail.com",
     "password": "teste",
     "isAdmin": true
+  },
+  "duplicateRegisterUser": {
+    "nome": "Usuário Duplicado",
+    "email": "fulano@qa.com",
+    "password": "teste",
+    "isAdmin": true
+  },
+  "messages": {
+    "invalidCredentials": "Email e/ou senha inválidos",
+    "duplicateEmail": "Este email já está sendo usado"
   }
 }

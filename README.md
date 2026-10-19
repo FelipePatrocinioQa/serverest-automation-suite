@@ -119,12 +119,16 @@ O Cypress e o Mochawesome escrevem relatórios HTML/JSON em `cypress/reports/`. 
 1. Login com credenciais válidas.
 2. Listagem de usuários.
 3. Cadastro de usuário com payload válido.
+4. Rejeição de login com credenciais inválidas.
+5. Rejeição de cadastro com campos obrigatórios vazios.
 
 ### Frontend
 
 1. Login com sucesso.
 2. Mensagem de erro para credenciais inválidas.
 3. Cadastro de um novo usuário pela interface.
+4. Rejeição de login com senha incorreta para uma conta válida.
+5. Rejeição de cadastro com e-mail já registrado.
 
 ## 🚀 Instalação e execução
 
